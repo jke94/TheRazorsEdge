@@ -3,10 +3,40 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WFPApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        xmlns:vm ="clr-namespace:WFPApp"
+    Title="MainWindow" Height="450" Width="800">
+
+    <Window.Resources>
         
+    </Window.Resources>
+    
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" DataContext="{StaticResource EstacionMetereologica}">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="10" Width="120">
+                <Border BorderThickness="2" BorderBrush="Black" Margin="5">
+                    <TextBlock  Text="Temperatura"      TextAlignment="Center"  Margin="5"></TextBlock>
+                </Border>
+                <Border BorderThickness="2" BorderBrush="Gray" Margin="5">
+                    <TextBlock  Text="{Binding Temperatura}"  TextAlignment="Center"  Margin="5"></TextBlock>
+                </Border>
+            </StackPanel>
+            <StackPanel Margin="10" Width="120">
+                <Border BorderThickness="2" BorderBrush="Black" Margin="5">
+                    <TextBlock  Text="Humedad"      TextAlignment="Center"  Margin="5"></TextBlock>
+                </Border>
+                <Border BorderThickness="2" BorderBrush="Gray" Margin="5">
+                    <TextBlock  Text="{Binding Humedad}"  TextAlignment="Center"    Margin="5"></TextBlock>
+                </Border>
+            </StackPanel>
+            <StackPanel Margin="10" Width="120">
+                <Border BorderThickness="2" BorderBrush="Black" Margin="5">
+                    <TextBlock  Text="Presión"      TextAlignment="Center"  Margin="5"></TextBlock>
+                </Border>
+                <Border BorderThickness="2" BorderBrush="Gray" Margin="5">
+                    <TextBlock  Text="{Binding Presion}"  TextAlignment="Center" Margin="5"></TextBlock>
+                </Border>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
