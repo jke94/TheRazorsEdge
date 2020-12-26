@@ -10,11 +10,11 @@ namespace WFPApp
     {
         // otras métodos y propiedades del dispositivo
 
-        public void ActualizarPantallaDipositivo(object sender, Tuple<decimal, decimal, decimal> medidas)
+        public void ActualizarPantallaDipositivo(object sender, Oddfellow medidas)
         {
-            var temperatura = medidas.Item1;
-            var presion = medidas.Item2;
-            var humedad = medidas.Item3;
+            var temperatura = medidas.Temperatura;
+            var presion = medidas.Presion;
+            var humedad = medidas.Humedad;
 
             // cosas importantes que hacer con las medidas
         }

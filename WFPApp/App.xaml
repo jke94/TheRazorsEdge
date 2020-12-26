@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:WFPApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <local:EstacionMetereologica x:Key="EstacionMetereologica"></local:EstacionMetereologica>
+        <local:ViewModel x:Key="MyViewModel"></local:ViewModel>
     </Application.Resources>
 </Application>
