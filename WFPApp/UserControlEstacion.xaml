@@ -11,6 +11,18 @@
             <Setter Property="Margin"           Value="5"></Setter>
             <Setter Property="TextAlignment"    Value="Center"></Setter>
             <Setter Property="VerticalAlignment"    Value="Center"></Setter>
+            <Setter Property="Background"    Value="#cdcdce"></Setter>
+            <Setter Property="FontFamily"    Value="Arial"></Setter>
+        </Style>
+
+        <Style x:Key="TextBlockTypeB" TargetType="TextBlock">
+            <Setter Property="Margin"           Value="5"></Setter>
+            <Setter Property="TextAlignment"    Value="Center"></Setter>
+            <Setter Property="VerticalAlignment"    Value="Center"></Setter>
+            <Setter Property="Background"    Value="#a3f8cf"></Setter>
+            <Setter Property="FontFamily"    Value="Arial"></Setter>
+            <Setter Property="FontWeight"    Value="DemiBold"></Setter>
+            <Setter Property="FontSize"    Value="15"></Setter>
         </Style>
 
         <Style x:Key="TextBlockTypeMessage" TargetType="TextBlock">
@@ -25,6 +37,7 @@
             <Setter Property="BorderThickness"  Value="2"></Setter>
             <Setter Property="BorderBrush"      Value="Black"></Setter>
             <Setter Property="Margin"           Value="5"></Setter>
+            <Setter Property="Background"           Value="#cdcdce"></Setter>
         </Style>
 
         <Style x:Key="BorderTypeB"  TargetType="Border">
@@ -32,6 +45,7 @@
             <Setter Property="BorderThickness"  Value="2"></Setter>
             <Setter Property="BorderBrush"      Value="Gray"></Setter>
             <Setter Property="Margin"           Value="5"></Setter>
+            <Setter Property="Background"           Value="#a3f8cf"></Setter>
         </Style>
 
         <Style x:Key="BorderTypeC"  TargetType="Border">
@@ -54,6 +68,7 @@
 
         <Style x:Key="StackPanelTypeC"  TargetType="StackPanel">
             <Setter Property="Orientation"            Value="Vertical"></Setter>
+            <Setter Property="Background"       Value="#e3fff1"></Setter>
         </Style>
 
         <Style x:Key="GridTypeA"    TargetType="Grid">
@@ -73,7 +88,7 @@
     <Grid Style="{StaticResource GridTypeA}" 
           DataContext="{StaticResource MyViewModel}">
         <StackPanel Style="{StaticResource StackPanelTypeC}" >
-        
+           
             <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -84,7 +99,8 @@
                 </Border>
             <Border Grid.Column="1"
                     Style="{StaticResource BorderTypeA}" Width="Auto">
-                    <TextBlock Text="Eolic windmill" Style="{StaticResource TextBlockTypeA}">
+                    <TextBlock Text="Eolic windmill" Style="{StaticResource TextBlockTypeA}"
+                               FontSize="23">
                     </TextBlock>
                 </Border>
             </Grid>
@@ -92,13 +108,13 @@
             <StackPanel Orientation="Horizontal">
                 <StackPanel Style="{StaticResource StackPanelTypeA}">
                     <Border Style="{StaticResource BorderTypeA}">
-                        <TextBlock  Text="Temperatura (ºC)"  
+                        <TextBlock  Text="Temperatura (ºC)"   
                                     Style="{StaticResource TextBlockTypeA}">
                         </TextBlock>
                     </Border>
                     <Border Style="{StaticResource BorderTypeB}">
                         <TextBlock  Text="{Binding EstacionMetereologica.Temperatura, UpdateSourceTrigger=PropertyChanged}"
-                                    Style="{StaticResource TextBlockTypeA}">
+                                    Style="{StaticResource TextBlockTypeB}">
                         </TextBlock>
                     </Border>
                     <Border Style="{StaticResource BorderTypeC}">
@@ -115,7 +131,7 @@
                     </Border>
                     <Border Style="{StaticResource BorderTypeB}">
                         <TextBlock  Text="{Binding EstacionMetereologica.Humedad, UpdateSourceTrigger=PropertyChanged}"
-                                    Style="{StaticResource TextBlockTypeA}">
+                                    Style="{StaticResource TextBlockTypeB}">
                         </TextBlock>
                     </Border>
                     <Border Style="{StaticResource BorderTypeC}">
@@ -132,7 +148,7 @@
                     </Border>
                     <Border Style="{StaticResource BorderTypeB}">
                         <TextBlock  Text="{Binding EstacionMetereologica.Presion, UpdateSourceTrigger=PropertyChanged}"
-                                    Style="{StaticResource TextBlockTypeA}">
+                                    Style="{StaticResource TextBlockTypeB}">
                         </TextBlock>
                     </Border>
                     <Border Style="{StaticResource BorderTypeC}">
