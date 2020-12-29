@@ -90,17 +90,23 @@
         <StackPanel Style="{StaticResource StackPanelTypeC}" >
            
             <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Style="{StaticResource BorderTypeA}">
-                    <Image Style="{StaticResource ImageTypeA}"></Image>
-                </Border>
-            <Border Grid.Column="1"
-                    Style="{StaticResource BorderTypeA}" Width="Auto">
-                    <TextBlock Text="Eolic windmill" Style="{StaticResource TextBlockTypeA}"
-                               FontSize="23">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Style="{StaticResource BorderTypeA}">
+                        <Image Style="{StaticResource ImageTypeA}"></Image>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Style="{StaticResource BorderTypeA}" Width="Auto">
+                            <TextBlock Text="Eolic windmill" Style="{StaticResource TextBlockTypeA}"
+                                       FontSize="23">
+                            </TextBlock>
+                    </Border>
+                    <Border Grid.Column="2" Style="{StaticResource BorderTypeA}">
+                    <TextBlock Text="1" Style="{StaticResource TextBlockTypeA}"
+                                    FontSize="23">
                     </TextBlock>
                 </Border>
             </Grid>
@@ -108,7 +114,7 @@
             <StackPanel Orientation="Horizontal">
                 <StackPanel Style="{StaticResource StackPanelTypeA}">
                     <Border Style="{StaticResource BorderTypeA}">
-                        <TextBlock  Text="Temperatura (ºC)"   
+                        <TextBlock  Text="Temperature (ºC)"   
                                     Style="{StaticResource TextBlockTypeA}">
                         </TextBlock>
                     </Border>
@@ -125,7 +131,7 @@
                 </StackPanel>
                 <StackPanel Style="{StaticResource StackPanelTypeA}">
                     <Border Style="{StaticResource BorderTypeA}">
-                        <TextBlock  Text="Humedad (%)"      
+                        <TextBlock  Text="Humidity (%)"      
                                     Style="{StaticResource TextBlockTypeA}">
                         </TextBlock>
                     </Border>
@@ -142,7 +148,7 @@
                 </StackPanel>
                 <StackPanel Style="{StaticResource StackPanelTypeA}">
                     <Border Style="{StaticResource BorderTypeA}">
-                        <TextBlock  Text="Presión (atm)"      
+                        <TextBlock  Text="Pressure (atm)"      
                                     Style="{StaticResource TextBlockTypeA}">
                         </TextBlock>
                     </Border>
