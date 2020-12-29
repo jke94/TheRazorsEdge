@@ -4,96 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        xmlns:vm ="clr-namespace:WFPApp"
+        xmlns:local ="clr-namespace:WFPApp"
     Title="MainWindow" Height="450" Width="500">
 
-    <Window.Resources>
-        <Style x:Key="TextBlockTypeA" TargetType="TextBlock">
-            <Setter Property="Margin"           Value="5"></Setter>
-            <Setter Property="TextAlignment"    Value="Center"></Setter>
-        </Style>
-
-        <Style x:Key="TextBlockTypeMessage" TargetType="TextBlock">
-            <Setter Property="Margin"           Value="5"></Setter>
-            <Setter Property="TextAlignment"    Value="Center"></Setter>
-            <Setter Property="Height"           Value="100"></Setter>
-            <Setter Property="FontSize"         Value="9"></Setter>
-            <Setter Property="TextWrapping"     Value="Wrap"></Setter>
-        </Style>
-        <Style x:Key="BorderTypeA"  TargetType="Border">
-            <Setter Property="BorderThickness"  Value="2"></Setter>
-            <Setter Property="BorderBrush"      Value="Black"></Setter>
-            <Setter Property="Margin"           Value="5"></Setter>
-        </Style>
-
-        <Style x:Key="BorderTypeB"  TargetType="Border">
-            <Setter Property="BorderThickness"  Value="2"></Setter>
-            <Setter Property="BorderBrush"      Value="Gray"></Setter>
-            <Setter Property="Margin"           Value="5"></Setter>
-        </Style>
-
-        <Style x:Key="StackPanelTypeA"  TargetType="StackPanel">
-            <Setter Property="Width"            Value="120"></Setter>
-            <Setter Property="Margin"           Value="10"></Setter>
-        </Style>
-    </Window.Resources>
-    
-    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" DataContext="{StaticResource MyViewModel}">
-        <StackPanel Orientation="Vertical">
-
-            <StackPanel Orientation="Horizontal">
-                <StackPanel Style="{StaticResource StackPanelTypeA}">
-                    <Border Style="{StaticResource BorderTypeA}">
-                        <TextBlock  Text="Temperatura"  
-                                    Style="{StaticResource TextBlockTypeA}">
-                        </TextBlock>
-                    </Border>
-                    <Border Style="{StaticResource BorderTypeB}">
-                        <TextBlock  Text="{Binding EstacionMetereologica.Temperatura, UpdateSourceTrigger=PropertyChanged}"
-                                    Style="{StaticResource TextBlockTypeA}">
-                        </TextBlock>
-                    </Border>
-                    <Border Style="{StaticResource BorderTypeB}">
-                        <TextBlock Text="{Binding TextMessageTemperatura, UpdateSourceTrigger=PropertyChanged}" 
-                                   Style="{StaticResource TextBlockTypeMessage}">
-                        </TextBlock>
-                    </Border>
-                </StackPanel>
-                <StackPanel Style="{StaticResource StackPanelTypeA}">
-                    <Border Style="{StaticResource BorderTypeA}">
-                        <TextBlock  Text="Humedad"      
-                                    Style="{StaticResource TextBlockTypeA}">
-                        </TextBlock>
-                    </Border>
-                    <Border Style="{StaticResource BorderTypeB}">
-                        <TextBlock  Text="{Binding EstacionMetereologica.Humedad, UpdateSourceTrigger=PropertyChanged}"
-                                    Style="{StaticResource TextBlockTypeA}">
-                        </TextBlock>
-                    </Border>
-                    <Border Style="{StaticResource BorderTypeB}">
-                        <TextBlock Text="{Binding TextMessageHumedad, UpdateSourceTrigger=PropertyChanged}"
-                                   Style="{StaticResource TextBlockTypeMessage}">
-                        </TextBlock>
-                    </Border>
-                </StackPanel>
-                <StackPanel Style="{StaticResource StackPanelTypeA}">
-                    <Border Style="{StaticResource BorderTypeA}">
-                        <TextBlock  Text="Presión"      
-                                    Style="{StaticResource TextBlockTypeA}">
-                        </TextBlock>
-                    </Border>
-                    <Border Style="{StaticResource BorderTypeB}">
-                        <TextBlock  Text="{Binding EstacionMetereologica.Presion, UpdateSourceTrigger=PropertyChanged}"
-                                    Style="{StaticResource TextBlockTypeA}">
-                        </TextBlock>
-                    </Border>
-                    <Border Style="{StaticResource BorderTypeB}">
-                        <TextBlock Text="{Binding TextMessagePresion, UpdateSourceTrigger=PropertyChanged}"
-                                   Style="{StaticResource TextBlockTypeMessage}">
-                        </TextBlock>
-                    </Border>
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+    <Grid>
+        <local:UserControlEstacion></local:UserControlEstacion>
     </Grid>
 </Window>
