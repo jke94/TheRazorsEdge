@@ -4,6 +4,6 @@
              xmlns:ViewModels="clr-namespace:WFPApp.ViewModel"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ViewModels:ViewModel x:Key="MyViewModel"></ViewModels:ViewModel>
+        <ViewModels:WindTurbineViewModel x:Key="MyViewModel"></ViewModels:WindTurbineViewModel>
     </Application.Resources>
 </Application>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WFPApp.ViewModel
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class WindTurbineViewModel : INotifyPropertyChanged
     {
         private string textMessageTemperatura;
         private string textMessageHumedad;
@@ -73,7 +73,7 @@ namespace WFPApp.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ViewModel()
+        public WindTurbineViewModel()
         {
             EstacionMetereologica = new EstacionMetereologica();
 

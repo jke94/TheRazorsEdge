@@ -60,7 +60,7 @@
     <Compile Include="View\UserControls\UserControlEstacion.xaml.cs">
       <DependentUpon>UserControlEstacion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\ViewModel.cs" />
+    <Compile Include="ViewModel\WindTurbineViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
