@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WFPApp
+namespace WFPApp.Model
 {
     public class Oddfellow
     {

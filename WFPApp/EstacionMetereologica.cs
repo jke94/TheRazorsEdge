@@ -1,4 +1,5 @@
 ﻿using System;
+using WFPApp.Model;
 
 namespace WFPApp
 {

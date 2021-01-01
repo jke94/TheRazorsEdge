@@ -4,7 +4,7 @@ using System.IO;
 using System.IO.Pipes;
 using System.Threading.Tasks;
 
-namespace WFPApp
+namespace WFPApp.ViewModel
 {
     public class ViewModel : INotifyPropertyChanged
     {

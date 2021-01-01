@@ -57,10 +57,10 @@
     </ApplicationDefinition>
     <Compile Include="DispositivoEstadisticas.cs" />
     <Compile Include="DispositivoPredictivo.cs" />
-    <Compile Include="UserControlEstacion.xaml.cs">
+    <Compile Include="View\UserControls\UserControlEstacion.xaml.cs">
       <DependentUpon>UserControlEstacion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,13 +75,13 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControlEstacion.xaml">
+    <Page Include="View\UserControls\UserControlEstacion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Oddfellow.cs" />
+    <Compile Include="Model\Oddfellow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -114,16 +114,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\windmills.png" />
+    <Resource Include="View\Icons\windmills.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\windmill.png" />
+    <Resource Include="View\Icons\windmill.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\eolic-energy.png" />
+    <Resource Include="View\Icons\eolic-energy.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\turbina-eolica.png" />
+    <Resource Include="View\Icons\turbina-eolica.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\Styles\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
