@@ -12,8 +12,7 @@
 
     </UserControl.Resources>
 
-    <Grid Style="{StaticResource GridTypeA}" 
-          DataContext="{StaticResource MyViewModel}">
+    <Grid Style="{StaticResource GridTypeA}">
         <StackPanel Style="{StaticResource StackPanelTypeC}" >
 
             <Grid>
@@ -27,12 +26,12 @@
                 </Border>
                 <Border Grid.Column="1"
                             Style="{StaticResource BorderTypeA}" Width="Auto">
-                    <TextBlock Text="Wind Turbine" Style="{StaticResource TextBlockTypeA}"
+                    <TextBlock Text="{Binding WindTurbine.WindTurbineName}" Style="{StaticResource TextBlockTypeA}"
                                        FontSize="23">
                     </TextBlock>
                 </Border>
                 <Border Grid.Column="2" Style="{StaticResource BorderTypeA}">
-                    <TextBlock Text="1" Style="{StaticResource TextBlockTypeA}"
+                    <TextBlock Text="{Binding WindTurbine.WindTurbineID}" Style="{StaticResource TextBlockTypeA}"
                                     FontSize="23">
                     </TextBlock>
                 </Border>

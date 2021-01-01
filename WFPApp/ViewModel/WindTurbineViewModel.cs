@@ -3,11 +3,13 @@ using System.ComponentModel;
 using System.IO;
 using System.IO.Pipes;
 using System.Threading.Tasks;
+using WFPApp.Model;
 
 namespace WFPApp.ViewModel
 {
     public class WindTurbineViewModel : INotifyPropertyChanged
     {
+        private WindTurbine windTurbine;
         private string textMessageTemperatura;
         private string textMessageHumedad;
         private string textMessagePresion;
@@ -71,10 +73,27 @@ namespace WFPApp.ViewModel
             }
         }
 
+        public WindTurbine WindTurbine
+        {
+            get
+            {
+                return windTurbine;
+            }
+
+            set
+            {
+                if (windTurbine != value)
+                {
+                    windTurbine = value;
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public WindTurbineViewModel()
+        public WindTurbineViewModel(WindTurbine windTurbine)
         {
+            WindTurbine = windTurbine;
             EstacionMetereologica = new EstacionMetereologica();
 
             DispositivoTiempoActual dispositivoTiempoActual = new DispositivoTiempoActual();
@@ -88,12 +107,13 @@ namespace WFPApp.ViewModel
             TextMessageTemperatura = "Mensajes, sensor temperatura. Esperando conecxión...";
             TextMessageHumedad = "Mensajes, sensor humedad. Esperando conecxión...";
             TextMessagePresion = "Mensajes, sensor presion. Esperando conecxión...";
-            
+
             Task[] tasks = new Task[3]
             {
-                Task.Run(() => InitializeNamedPipeServer(NamedPipesName.ThePipeNameTemperatura,TextMessageTemperatura, nameof(TextMessageTemperatura))),
-                Task.Run(() => InitializeNamedPipeServer(NamedPipesName.ThePipeNameHumedad,TextMessageHumedad, nameof(TextMessageHumedad))),
-                Task.Run(() => InitializeNamedPipeServer(NamedPipesName.ThePipeNamePresion, TextMessagePresion, nameof(TextMessagePresion))),
+                
+                Task.Run(() => InitializeNamedPipeServer(new NamedPipeNameBuilder(NamedPipesName.ThePipeNameTemperatura,"Turbine", WindTurbine.WindTurbineID).ToString(),TextMessageTemperatura, nameof(TextMessageTemperatura))),
+                Task.Run(() => InitializeNamedPipeServer(new NamedPipeNameBuilder(NamedPipesName.ThePipeNameHumedad,"Turbine", WindTurbine.WindTurbineID).ToString(),TextMessageHumedad, nameof(TextMessageHumedad))),
+                Task.Run(() => InitializeNamedPipeServer(new NamedPipeNameBuilder(NamedPipesName.ThePipeNamePresion,"Turbine", WindTurbine.WindTurbineID).ToString(), TextMessagePresion, nameof(TextMessagePresion))),
             };
         }
 

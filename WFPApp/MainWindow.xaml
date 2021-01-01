@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:UserControls="clr-namespace:WFPApp.View.UserControls"
-    Title="MainWindow" Height="450" Width="500">
+    Title="MainWindow" Height="250" Width="600">
 
     <Grid>
-        <UserControls:UserControlWindTurbine></UserControls:UserControlWindTurbine>
+        <!--<UserControls:UserControlWindTurbine></UserControls:UserControlWindTurbine>-->
+        <UserControls:UserControlWindFarm></UserControls:UserControlWindFarm>
     </Grid>
 </Window>

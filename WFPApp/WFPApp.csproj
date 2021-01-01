@@ -57,6 +57,12 @@
     </ApplicationDefinition>
     <Compile Include="DispositivoEstadisticas.cs" />
     <Compile Include="DispositivoPredictivo.cs" />
+    <Compile Include="Model\WindFarm.cs" />
+    <Compile Include="Model\WindTurbine.cs" />
+    <Compile Include="ViewModel\WindFarmViewModel.cs" />
+    <Compile Include="View\UserControls\UserControlWindFarm.xaml.cs">
+      <DependentUpon>UserControlWindFarm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\UserControlWindTurbine.xaml.cs">
       <DependentUpon>UserControlWindTurbine.xaml</DependentUpon>
     </Compile>
@@ -76,6 +82,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Styles\WindTurbineStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\UserControlWindFarm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
