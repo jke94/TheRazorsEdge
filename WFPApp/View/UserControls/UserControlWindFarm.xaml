@@ -1,8 +1,6 @@
 ﻿<UserControl x:Class="WFPApp.View.UserControls.UserControlWindFarm"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:UserControls="clr-namespace:WFPApp.View.UserControls"
              xmlns:ViewModel="clr-namespace:WFPApp.ViewModel">
 
@@ -16,7 +14,7 @@
 
     </UserControl.Resources>
     
-    <Grid>
+    <Grid >
         <StackPanel Orientation="Vertical"
                     DataContext="{StaticResource MyWindFarmViewModel}">
 
@@ -30,21 +28,31 @@
                 </TextBlock>
             </Border>
 
-            <TabControl TabStripPlacement="Left"
-                     
+            <TabControl TabStripPlacement="Left" Style="{StaticResource TabControlTypeA}"
                     ItemsSource="{Binding TabItems}" 
                     SelectedItem="{Binding SelectedTab}">
                 <TabControl.Resources>
-                    <DataTemplate DataType="{x:Type ViewModel:WindTurbineViewModel}">
+                    <DataTemplate DataType="{x:Type ViewModel:WindTurbineViewModel}"> 
                         <UserControls:UserControlWindTurbine/>
                     </DataTemplate>
                 </TabControl.Resources>
                 <TabControl.ItemTemplate>
+
                     <!-- this is the header template-->
                     <DataTemplate>
-                        <TextBlock Text="{Binding WindTurbine}" />
+                        <StackPanel Orientation="Horizontal">
+                            <Border BorderBrush="Black" BorderThickness="2" Margin="2">
+                                <Image Source="..\Icons\turbina-eolica.png" Width="20" Height="20" Margin="2"></Image>
+                            </Border>
+                            <TextBlock Text="{Binding WindTurbine}" Margin="2"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
                     </DataTemplate>
                 </TabControl.ItemTemplate>
+                
+                <TabControl.ItemContainerStyle>
+                    <Style TargetType="TabItem" BasedOn="{StaticResource TabItemTypeA}"></Style>
+                </TabControl.ItemContainerStyle>
             </TabControl>
         </StackPanel>
     </Grid>

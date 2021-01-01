@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:UserControls="clr-namespace:WFPApp.View.UserControls"
-    Title="MainWindow" Height="250" Width="600">
+        Title="Wind Farm Application" Height="350" Width="700"
+        Background="SlateGray"
+        Icon=".\View\Icons\turbina-eolica.png"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
 
-    <Grid>
-        <!--<UserControls:UserControlWindTurbine></UserControls:UserControlWindTurbine>-->
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <UserControls:UserControlWindFarm></UserControls:UserControlWindFarm>
     </Grid>
 </Window>
