@@ -47,7 +47,7 @@
         <Setter Property="BorderThickness"  Value="2"></Setter>
         <Setter Property="BorderBrush"      Value="Gray"></Setter>
         <Setter Property="Margin"           Value="5"></Setter>
-        <Setter Property="Visibility"       Value="Collapsed"></Setter>
+        <Setter Property="Visibility"       Value="Visible"></Setter>
     </Style>
 
     <Style x:Key="StackPanelTypeA"  TargetType="StackPanel">
