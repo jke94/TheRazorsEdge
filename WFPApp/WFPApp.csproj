@@ -57,8 +57,8 @@
     </ApplicationDefinition>
     <Compile Include="DispositivoEstadisticas.cs" />
     <Compile Include="DispositivoPredictivo.cs" />
-    <Compile Include="View\UserControls\UserControlEstacion.xaml.cs">
-      <DependentUpon>UserControlEstacion.xaml</DependentUpon>
+    <Compile Include="View\UserControls\UserControlWindTurbine.xaml.cs">
+      <DependentUpon>UserControlWindTurbine.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\WindTurbineViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -75,7 +75,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\UserControls\UserControlEstacion.xaml">
+    <Page Include="View\UserControls\UserControlWindTurbine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

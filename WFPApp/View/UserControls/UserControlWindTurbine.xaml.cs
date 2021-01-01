@@ -18,9 +18,9 @@ namespace WFPApp.View.UserControls
     /// <summary>
     /// Interaction logic for UserControl.xaml
     /// </summary>
-    public partial class UserControlEstacion : UserControl
+    public partial class UserControlWindTurbine : UserControl
     {
-        public UserControlEstacion()
+        public UserControlWindTurbine()
         {
             InitializeComponent();
         }
