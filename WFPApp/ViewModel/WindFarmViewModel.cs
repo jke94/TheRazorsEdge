@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WFPApp.Model;
+using WFPApp.Model.Assistants;
 
 namespace WFPApp.ViewModel
 {
@@ -18,22 +19,24 @@ namespace WFPApp.ViewModel
 
         public WindFarmViewModel()
         {
-            WindFarm = new WindFarm("The Wind Farm Park");
+            WindFarm = new WindFarm(WindFarmAssistant.windFarmName);
 
-            ListWindTurbines = new List<WindTurbine>()
-            { 
-                new WindTurbine(0, "Wind Turbine"),
-                new WindTurbine(1, "Wind Turbine"),
-                new WindTurbine(2, "Wind Turbine")
-            };
+            ListWindTurbines = new List<WindTurbine>();
+
+            for (int i = 0; i< WindFarmAssistant.numberOfWindTurbines; i++)
+            {
+                ListWindTurbines.Add(new WindTurbine(i, "Wind Turbine"));
+            }
 
             TabItems = new ObservableCollection<WindTurbineViewModel>();
-            TabItems.Add(new WindTurbineViewModel(ListWindTurbines[0]));
-            TabItems.Add(new WindTurbineViewModel(ListWindTurbines[1]));
-            TabItems.Add(new WindTurbineViewModel(ListWindTurbines[2]));
+
+            for (int i = 0; i < WindFarmAssistant.numberOfWindTurbines; i++)
+            {
+                TabItems.Add(new WindTurbineViewModel(ListWindTurbines[i]));
+            }
+
             SelectedTab = TabItems[0];
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 

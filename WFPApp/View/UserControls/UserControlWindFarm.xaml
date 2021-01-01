@@ -5,22 +5,47 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:UserControls="clr-namespace:WFPApp.View.UserControls"
              xmlns:ViewModel="clr-namespace:WFPApp.ViewModel">
+
+    <UserControl.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Styles\WindFarmStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+    
     <Grid>
-        <TabControl TabStripPlacement="Left"
-                DataContext="{StaticResource MyWindFarmViewModel}" 
-                ItemsSource="{Binding TabItems}" 
-                SelectedItem="{Binding SelectedTab}">
-            <TabControl.Resources>
-                <DataTemplate DataType="{x:Type ViewModel:WindTurbineViewModel}">
-                    <UserControls:UserControlWindTurbine/>
-                </DataTemplate>
-            </TabControl.Resources>
-            <TabControl.ItemTemplate>
-                <!-- this is the header template-->
-                <DataTemplate>
-                    <TextBlock Text="{Binding WindTurbine}" />
-                </DataTemplate>
-            </TabControl.ItemTemplate>
-        </TabControl>
+        <StackPanel Orientation="Vertical"
+                    DataContext="{StaticResource MyWindFarmViewModel}">
+
+            <Border Grid.Column="1"
+                            Style="{StaticResource BorderTypeA}" Width="Auto">
+                <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Text="{Binding WindFarm.WindFarmName}"
+                       Style="{StaticResource TextBlockTypeA}">
+
+                </TextBlock>
+            </Border>
+
+            <TabControl TabStripPlacement="Left"
+                     
+                    ItemsSource="{Binding TabItems}" 
+                    SelectedItem="{Binding SelectedTab}">
+                <TabControl.Resources>
+                    <DataTemplate DataType="{x:Type ViewModel:WindTurbineViewModel}">
+                        <UserControls:UserControlWindTurbine/>
+                    </DataTemplate>
+                </TabControl.Resources>
+                <TabControl.ItemTemplate>
+                    <!-- this is the header template-->
+                    <DataTemplate>
+                        <TextBlock Text="{Binding WindTurbine}" />
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+            </TabControl>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -13,25 +13,19 @@ namespace AutoClienteConsole
     {
         static void  Main(string[] args)
         {
-            int numberOfTurbines = 3;
-            WindTurbineSimulator[] windTurbines = new WindTurbineSimulator[3];
+            int numberOfTurbines = 5;
+            WindTurbineSimulator[] windTurbines = new WindTurbineSimulator[numberOfTurbines];
 
-            for (int i = 0; i < numberOfTurbines; i++)
+            for(int i = 0; i < numberOfTurbines; i++)
             {
                 Console.WriteLine("i = " + i);
                 windTurbines[i] = new WindTurbineSimulator(i);
             }
-
-            Task.WaitAll(windTurbines[0].TurbineTask);
-            Task.WaitAll(windTurbines[1].TurbineTask);
-            Task.WaitAll(windTurbines[2].TurbineTask);
-
-            //Task[] tasks = new Task[3]
-            //{
-            //    Task.Run(() => InitializeNamedPipeClient(NamedPipesName.ThePipeNameTemperatura)),
-            //    Task.Run(() => InitializeNamedPipeClient(NamedPipesName.ThePipeNameHumedad)),
-            //    Task.Run(() => InitializeNamedPipeClient(NamedPipesName.ThePipeNamePresion)),
-            //};
+            
+            for(int i=0; i < numberOfTurbines; i++)
+            {
+                Task.WaitAll(windTurbines[i].TurbineTask);
+            }
         }
     }
 }
