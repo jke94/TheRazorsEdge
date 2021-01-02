@@ -15,7 +15,7 @@ A WPF (Windows Presentation Foundation) Applicaction (server) and console applic
 ### Installing
 
 * Clone project.
-* Open TheRazorEdge.sln.
+* Open TheRazorEdge.sln
 
 
 ### Executing program
