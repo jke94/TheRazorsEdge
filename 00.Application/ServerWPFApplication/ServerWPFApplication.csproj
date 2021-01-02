@@ -55,6 +55,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\DispositivoEstadisticas.cs" />
+    <Compile Include="Core\DispositivoPredictivo.cs" />
+    <Compile Include="Core\DispositivoTiempoActual.cs" />
+    <Compile Include="Core\EstacionMetereologica.cs" />
+    <Compile Include="ViewModel\WindFarmViewModel.cs" />
+    <Compile Include="ViewModel\WindTurbineViewModel.cs" />
+    <Compile Include="View\UserControls\UserControlWindFarm.xaml.cs">
+      <DependentUpon>UserControlWindFarm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\UserControlWindTurbine.xaml.cs">
+      <DependentUpon>UserControlWindTurbine.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,8 +79,28 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Styles\WindFarmStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Styles\WindTurbineStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UserControls\UserControlWindFarm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UserControls\UserControlWindTurbine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Assistants\WindFarmAssistant.cs" />
+    <Compile Include="Model\Oddfellow.cs" />
+    <Compile Include="Model\WindFarm.cs" />
+    <Compile Include="Model\WindTurbine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -93,6 +125,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\01.Shared\Shared\Shared.csproj">
+      <Project>{06c42483-b5b0-4fd6-a326-10c2ad151007}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Icons\eolic-energy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Icons\turbina-eolica.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Icons\windmill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Icons\windmills.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,6 +10,19 @@ namespace ClientConsoleSimulator
     {
         static void Main(string[] args)
         {
+            int numberOfTurbines = 5;
+            WindTurbineSimulator[] windTurbines = new WindTurbineSimulator[numberOfTurbines];
+
+            for (int i = 0; i < numberOfTurbines; i++)
+            {
+                Console.WriteLine("i = " + i);
+                windTurbines[i] = new WindTurbineSimulator(i);
+            }
+
+            for (int i = 0; i < numberOfTurbines; i++)
+            {
+                Task.WaitAll(windTurbines[i].TurbineTask);
+            }
         }
     }
 }
