@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="WFPApp.View.UserControls.UserControlWindTurbine"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Beige">
+    <UserControl.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Styles\WindTurbineStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+
+    <Grid Style="{StaticResource GridTypeA}">
+        <StackPanel Style="{StaticResource StackPanelTypeC}" >
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Style="{StaticResource BorderTypeA}">
+                    <Image Style="{StaticResource ImageTypeA}"></Image>
+                </Border>
+                <Border Grid.Column="1"
+                            Style="{StaticResource BorderTypeA}" Width="Auto">
+                    <TextBlock Text="{Binding WindTurbine.WindTurbineName}" Style="{StaticResource TextBlockTypeA}"
+                                       FontSize="23">
+                    </TextBlock>
+                </Border>
+                <Border Grid.Column="2" Style="{StaticResource BorderTypeA}">
+                    <TextBlock Text="{Binding WindTurbine.WindTurbineID}" Style="{StaticResource TextBlockTypeA}"
+                                    FontSize="23">
+                    </TextBlock>
+                </Border>
+            </Grid>
+            <Separator Margin="5"></Separator>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Style="{StaticResource StackPanelTypeA}">
+                    <Border Style="{StaticResource BorderTypeA}">
+                        <TextBlock  Text="Temperature (ºC)"   
+                                    Style="{StaticResource TextBlockTypeA}">
+                        </TextBlock>
+                    </Border>
+                    <Border Style="{StaticResource BorderTypeB}">
+                        <TextBlock  Text="{Binding EstacionMetereologica.Temperatura, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{StaticResource TextBlockTypeB}">
+                        </TextBlock>
+                    </Border>
+                    <Border Style="{StaticResource BorderTypeC}">
+                        <TextBlock Text="{Binding TextMessageTemperatura, UpdateSourceTrigger=PropertyChanged}" 
+                                   Style="{StaticResource TextBlockTypeMessage}">
+                        </TextBlock>
+                    </Border>
+                </StackPanel>
+                <StackPanel Style="{StaticResource StackPanelTypeA}">
+                    <Border Style="{StaticResource BorderTypeA}">
+                        <TextBlock  Text="Humidity (%)"      
+                                    Style="{StaticResource TextBlockTypeA}">
+                        </TextBlock>
+                    </Border>
+                    <Border Style="{StaticResource BorderTypeB}">
+                        <TextBlock  Text="{Binding EstacionMetereologica.Humedad, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{StaticResource TextBlockTypeB}">
+                        </TextBlock>
+                    </Border>
+                    <Border Style="{StaticResource BorderTypeC}">
+                        <TextBlock Text="{Binding TextMessageHumedad, UpdateSourceTrigger=PropertyChanged}"
+                                   Style="{StaticResource TextBlockTypeMessage}">
+                        </TextBlock>
+                    </Border>
+                </StackPanel>
+                <StackPanel Style="{StaticResource StackPanelTypeA}">
+                    <Border Style="{StaticResource BorderTypeA}">
+                        <TextBlock  Text="Pressure (atm)"      
+                                    Style="{StaticResource TextBlockTypeA}">
+                        </TextBlock>
+                    </Border>
+                    <Border Style="{StaticResource BorderTypeB}">
+                        <TextBlock  Text="{Binding EstacionMetereologica.Presion, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{StaticResource TextBlockTypeB}">
+                        </TextBlock>
+                    </Border>
+                    <Border Style="{StaticResource BorderTypeC}">
+                        <TextBlock Text="{Binding TextMessagePresion, UpdateSourceTrigger=PropertyChanged}"
+                                   Style="{StaticResource TextBlockTypeMessage}">
+                        </TextBlock>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

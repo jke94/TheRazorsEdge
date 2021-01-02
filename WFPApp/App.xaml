@@ -1,9 +1,10 @@
 ﻿<Application x:Class="WFPApp.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WFPApp"
+             xmlns:ViewModels="clr-namespace:WFPApp.ViewModel"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ViewModels:WindFarmViewModel x:Key="MyWindFarmViewModel"></ViewModels:WindFarmViewModel>
+        <ViewModels:WindTurbineViewModel x:Key="MyWindTurbineViewModel"></ViewModels:WindTurbineViewModel>
     </Application.Resources>
 </Application>

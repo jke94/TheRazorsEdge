@@ -55,6 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DispositivoEstadisticas.cs" />
+    <Compile Include="DispositivoPredictivo.cs" />
+    <Compile Include="Model\Assistants\WindFarmAssistant.cs" />
+    <Compile Include="Model\WindFarm.cs" />
+    <Compile Include="Model\WindTurbine.cs" />
+    <Compile Include="ViewModel\WindFarmViewModel.cs" />
+    <Compile Include="View\UserControls\UserControlWindFarm.xaml.cs">
+      <DependentUpon>UserControlWindFarm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\UserControlWindTurbine.xaml.cs">
+      <DependentUpon>UserControlWindTurbine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\WindTurbineViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,12 +76,31 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DispositivoTiempoActual.cs" />
+    <Compile Include="EstacionMetereologica.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Styles\WindFarmStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Styles\WindTurbineStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\UserControlWindFarm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\UserControlWindTurbine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Oddfellow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -94,5 +126,24 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutoClienteConsole\AutoClienteConsole.csproj">
+      <Project>{a1cd43da-ac05-4869-9c79-e92305606a55}</Project>
+      <Name>AutoClienteConsole</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Icons\windmills.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Icons\windmill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Icons\eolic-energy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Icons\turbina-eolica.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
