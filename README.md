@@ -1,4 +1,4 @@
-# The Razors Edge Project
+# The Razor's Edge Project
 
 A WPF Applicaction (server) and console application (client) to comunicate using Named Pipes for Network Interprocess Communication.
 
@@ -44,5 +44,5 @@ Twitter Profile: [@JaviKarra94](https://twitter.com/JaviKarra94)
 This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
 
 ## Acknowledgments
-
-* [El patrón Observador en C#](https://albertcapdevila.net/patron-observador-csharp/)
+* [ACDC - The Razors Edge](https://www.youtube.com/watch?v=l_7SxoQW11g). The origin of the project name because the song was sounding in the creation of the project.
+* [El patrón Observador en C#](https://albertcapdevila.net/patron-observador-csharp/). Good explanation about observer pattern design.
