@@ -91,6 +91,11 @@ namespace WFPApp.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public WindTurbineViewModel()
+        {
+
+        }
+
         public WindTurbineViewModel(WindTurbine windTurbine)
         {
             WindTurbine = windTurbine;
