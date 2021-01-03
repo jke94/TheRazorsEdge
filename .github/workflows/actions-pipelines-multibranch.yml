@@ -6,8 +6,8 @@ name: TheRazorsEdge.sln multibranch pipeline
 # events but only for the master branch
 on:
   push:
-    branches:
-      - '!master'
+    branches-ignore:
+      - 'master'
 
 jobs:
 
