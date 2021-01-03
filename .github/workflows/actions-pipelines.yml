@@ -33,7 +33,6 @@ jobs:
       run:  msbuild TheRazorsEdge.sln /p:platform="Any CPU" /p:Configuration='Release'
 
     - name: Run Unit tests.
-      uses: actions/checkout@v2.1.0
       run: dotnet test
     
     - name: Upload artifact
