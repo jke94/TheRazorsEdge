@@ -1,0 +1,10 @@
+﻿<Application x:Class="ServerWPFApplication.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ViewModels="clr-namespace:ServerWPFApplication.ViewModel"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ViewModels:WindFarmViewModel x:Key="MyWindFarmViewModel"></ViewModels:WindFarmViewModel>
+        <ViewModels:WindTurbineViewModel x:Key="MyWindTurbineViewModel"></ViewModels:WindTurbineViewModel>
+    </Application.Resources>
+</Application>
