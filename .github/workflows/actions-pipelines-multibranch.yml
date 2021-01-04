@@ -29,12 +29,12 @@ jobs:
     - name: Setup MSBuild and Build the solution
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: Setup NUnit-Console command line
-      uses:  nunit/nunit-console@v3.11.1
-
     - name: Build solution TheRazorsEdge.sln
       run:  msbuild TheRazorsEdge.sln /p:platform="Any CPU" /p:Configuration='Release'
     
+    - name: Run tests.
+      run:  vstest.console .\02.TestingApplication\TestsServerWPFApplication\bin\Release\netcoreapp3.1\TestsServerWPFApplication.dll 
+
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
