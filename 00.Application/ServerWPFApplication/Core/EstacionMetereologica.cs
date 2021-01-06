@@ -63,6 +63,11 @@ namespace ServerWPFApplication.Core
 
         public EstacionMetereologica()
         {
+            // Data by default.
+
+            Temperatura = 20;
+            Presion = 100;
+            Humedad = 50;
         }
     }
 }

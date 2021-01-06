@@ -74,7 +74,7 @@
                 </StackPanel>
                 <StackPanel Style="{StaticResource StackPanelTypeA}">
                     <Border Style="{StaticResource BorderTypeA}">
-                        <TextBlock  Text="Pressure (atm)"      
+                        <TextBlock  Text="Pressure (kPa)"      
                                     Style="{StaticResource TextBlockTypeA}">
                         </TextBlock>
                     </Border>
