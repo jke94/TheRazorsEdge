@@ -19,5 +19,20 @@ namespace TestsClientConsoleSimulator
         {
             Assert.AreNotEqual(null, windTurbineSimulator);
         }
+
+        [Test(Description = "Test to check that TurbineTask object correctly built.")]
+        public void TestTurbineTaskAreNotNull()
+        {
+            Assert.IsNotNull(windTurbineSimulator.TurbineTask);
+        }
+
+        [Test(Description = "Test to check that all task are correctly built.")]
+        public void TestTasksAreNotNull()
+        {
+            foreach(Task task in windTurbineSimulator.TurbineTask)
+            {
+                Assert.IsNotNull(task);
+            }           
+        }
     }
 }
