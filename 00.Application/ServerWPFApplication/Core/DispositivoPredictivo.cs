@@ -6,7 +6,7 @@ namespace ServerWPFApplication.Core
     {
         public void AñadirDatosDePrediccion(object sender, Oddfellow e)
         {
-            // throw new NotImplementedException();
+
         }
     }
 }
