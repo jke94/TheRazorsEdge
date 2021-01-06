@@ -15,6 +15,7 @@ namespace ServerWPFApplication.ViewModel
         private string textMessageHumedad;
         private string textMessagePresion;
         private EstacionMetereologica estacionMetereologica;
+        private Task [] tasks;
 
         public string TextMessageTemperatura
         {
@@ -90,6 +91,8 @@ namespace ServerWPFApplication.ViewModel
             }
         }
 
+        public Task[] Tasks { get => tasks; set => tasks = value; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public WindTurbineViewModel()
@@ -114,7 +117,7 @@ namespace ServerWPFApplication.ViewModel
             TextMessageHumedad = "Mensajes, sensor humedad. Esperando conecxión...";
             TextMessagePresion = "Mensajes, sensor presion. Esperando conecxión...";
 
-            Task[] tasks = new Task[3]
+            Tasks = new Task[3]
             {
                 
                 Task.Run(() => InitializeNamedPipeServer(new NamedPipeNameBuilder(NamedPipesName.ThePipeNameTemperatura,"Turbine", WindTurbine.WindTurbineID).ToString(),TextMessageTemperatura, nameof(TextMessageTemperatura))),

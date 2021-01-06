@@ -2,9 +2,9 @@
 
 namespace ServerWPFApplication.Core
 {
-    internal class DispositivoEstadisticas
+    public class DispositivoEstadisticas
     {
-        internal void AñadirDatosParaLasEstadisticas(object sender, Oddfellow e)
+        public void AñadirDatosParaLasEstadisticas(object sender, Oddfellow e)
         {
             // throw new NotImplementedException();
         }

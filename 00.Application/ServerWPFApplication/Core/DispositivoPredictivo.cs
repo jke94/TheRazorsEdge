@@ -2,9 +2,9 @@
 
 namespace ServerWPFApplication.Core
 {
-    internal class DispositivoPredictivo
+    public class DispositivoPredictivo
     {
-        internal void AñadirDatosDePrediccion(object sender, Oddfellow e)
+        public void AñadirDatosDePrediccion(object sender, Oddfellow e)
         {
             // throw new NotImplementedException();
         }
