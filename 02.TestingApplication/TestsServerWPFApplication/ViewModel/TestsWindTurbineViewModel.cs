@@ -33,6 +33,10 @@ namespace TestsServerWPFApplication.ViewModel
             Assert.IsNotNull(windTurbineViewModel.EstacionMetereologica);;
 
             Assert.IsNotNull(windTurbineViewModel.Tasks);
+
+            Assert.IsNotNull(windTurbineViewModel.TextMessageHumedad);
+            Assert.IsNotNull(windTurbineViewModel.TextMessageTemperatura);
+            Assert.IsNotNull(windTurbineViewModel.TextMessagePresion);
         }
     }
 }
