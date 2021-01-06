@@ -18,6 +18,13 @@ namespace ServerWPFApplication.Core
             Notificar();
         }
 
+        public void DisminuirLaTemperaturaEnGrados(int grados)
+        {
+            Temperatura -= grados;
+
+            Notificar();
+        }
+
         public void AumentarLaPresionEnBares(int bares)
         {
             Presion += bares;
@@ -25,9 +32,23 @@ namespace ServerWPFApplication.Core
             Notificar();
         }
 
+        public void DisminuirLaPresionEnBares(int bares)
+        {
+            Presion -= bares;
+
+            Notificar();
+        }
+
         public void AumentarLaHumedadEnPorcentaje(int porcentaje)
         {
             Humedad += porcentaje;
+
+            Notificar();
+        }
+
+        public void DisminuirLaHumedadEnPorcentaje(int porcentaje)
+        {
+            Humedad -= porcentaje;
 
             Notificar();
         }
