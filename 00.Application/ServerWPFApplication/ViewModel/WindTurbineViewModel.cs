@@ -130,7 +130,7 @@ namespace ServerWPFApplication.ViewModel
         private void InitializeNamedPipeServer(string namedPipeServer, string message, string nameOfProperty)
         {
             using (NamedPipeServerStream pipeServer = 
-                    new NamedPipeServerStream(namedPipeServer, PipeDirection.In, 1,PipeTransmissionMode.Message))
+                    new NamedPipeServerStream(namedPipeServer, PipeDirection.In))
             {
                 message = "NamedPipeServerStream object created.";
 
