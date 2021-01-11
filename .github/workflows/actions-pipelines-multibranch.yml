@@ -32,9 +32,6 @@ jobs:
     - name: Build solution TheRazorsEdge.sln
       run:  msbuild TheRazorsEdge.sln /p:platform="Any CPU" /p:Configuration='Release'
     
-    - name: Run tests.
-      run:  vstest.console .\02.TestingApplication\TestsServerWPFApplication\bin\Release\netcoreapp3.1\TestsServerWPFApplication.dll 
-
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
