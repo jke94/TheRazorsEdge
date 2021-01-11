@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.IO.Pipes;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Shared;
 
 namespace ClientConsoleSimulator
@@ -30,36 +32,35 @@ namespace ClientConsoleSimulator
                 // Connect to the pipe or wait until the pipe is available.
                 Console.WriteLine("[{0}] Attempting to connect to pipe...", pipeClientName);
                 pipeClient.Connect();
-
                 Console.WriteLine("[{0}] Connected to pipe.", pipeClientName);
                 Console.WriteLine("[{0}] There are currently {0} pipe server instances open.",
                                     pipeClientName, pipeClient.NumberOfServerInstances.ToString());
+                  
                 try
                 {
                     var count = 0;
-                    // Read user input and send that to the client process.
+          
                     using (StreamWriter sw1 = new StreamWriter(pipeClient))
                     {
                         sw1.AutoFlush = true;
-                        var random = new Random();
                         do
                         {
-                            sw1.WriteLine(DateTime.Now.ToString());
+                            var metric = new TheMetric();
+                            
+                            sw1.WriteLine(JsonConvert.SerializeObject(metric));
                             sw1.Flush();
-                            Thread.Sleep(250 * (int)random.Next(20, 40) / Thread.CurrentThread.ManagedThreadId);
                             count++;
+
+                            Thread.Sleep(metric.TimeToSleep);
+
                             Console.WriteLine(string.Format("[{0}], Count = {1}", pipeClientName, count));
                         }
                         while (count < 10);
-
-                        sw1.WriteLine("[{0}] El cliente cerró la conecxión", pipeClientName);
-                    }
+                    }                    
                 }
-                // Catch the IOException that is raised if the pipe is broken
-                // or disconnected.
-                catch (IOException e)
+                catch (Exception e)
                 {
-                    Console.WriteLine("[{0}] ERROR: {0}", pipeClientName, e.Message);
+                    Console.WriteLine("[{0}] ERROR: {1}", pipeClientName, e.Message);
                 }
             }
             Console.WriteLine("[{0}] El cliente ha cerrado la conecxión...", pipeClientName);

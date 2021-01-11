@@ -5,6 +5,7 @@ using System.IO.Pipes;
 using System.Threading.Tasks;
 using ServerWPFApplication.Model;
 using ServerWPFApplication.Core;
+using Newtonsoft.Json;
 
 namespace ServerWPFApplication.ViewModel
 {
@@ -129,7 +130,7 @@ namespace ServerWPFApplication.ViewModel
         private void InitializeNamedPipeServer(string namedPipeServer, string message, string nameOfProperty)
         {
             using (NamedPipeServerStream pipeServer = 
-                    new NamedPipeServerStream(namedPipeServer, PipeDirection.In))
+                    new NamedPipeServerStream(namedPipeServer, PipeDirection.In, 1,PipeTransmissionMode.Message))
             {
                 message = "NamedPipeServerStream object created.";
 
@@ -145,27 +146,59 @@ namespace ServerWPFApplication.ViewModel
                     string temp;
                     while ((temp = sr.ReadLine()) != null)
                     {
-                        // message = string.Format("Texto escrito por el cliente: {0}", temp);
-                        
+                        var metric = JsonConvert.DeserializeObject<TheMetric>(temp.ToString());
+
                         switch (nameOfProperty)
                         {
                             case nameof(TextMessageTemperatura):
-                                TextMessageTemperatura  = string.Format("Texto escrito por el cliente: {0}", temp);
-                                EstacionMetereologica.AumentarLaTemperaturaEnGrados(1);
+
+                                TextMessageTemperatura = string.Format("Texto escrito por el cliente: {0}", temp);
+                                
+                                if (metric.WhatToDo)
+                                {
+                                    EstacionMetereologica.AumentarLaTemperaturaEnGrados((int)metric.TheValue);
+                                }
+                                else
+                                {
+                                    EstacionMetereologica.DisminuirLaTemperaturaEnGrados((int)metric.TheValue);
+                                }
+
                                 break;
                             case nameof(TextMessageHumedad):
+
                                 TextMessageHumedad = string.Format("Texto escrito por el cliente: {0}", temp);
-                                EstacionMetereologica.AumentarLaHumedadEnPorcentaje(1);
+
+                                if (metric.WhatToDo)
+                                {
+                                    EstacionMetereologica.AumentarLaHumedadEnPorcentaje((int)metric.TheValue);
+                                }
+                                else
+                                {
+                                    EstacionMetereologica.DisminuirLaHumedadEnPorcentaje((int)metric.TheValue);
+                                }
+
                                 break;
                             case nameof(TextMessagePresion):
                                 TextMessagePresion = string.Format("Texto escrito por el cliente: {0}", temp);
-                                EstacionMetereologica.AumentarLaPresionEnBares(1);
+
+                                if (metric.WhatToDo)
+                                {
+                                    EstacionMetereologica.AumentarLaPresionEnBares((int)metric.TheValue);
+                                }
+                                else
+                                {
+                                    EstacionMetereologica.DisminuirLaPresionEnBares((int)metric.TheValue);
+                                }
+
                                 break;
                         }
+
                         OnPropertyChanged(nameof(EstacionMetereologica));
                         OnPropertyChanged(nameof(nameOfProperty));
                     }
                 }
+
+            
             }
         }
 
