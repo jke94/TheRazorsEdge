@@ -40,7 +40,7 @@ namespace Shared
         {
             Random random = new Random();
 
-            return random.Next(0, 1) == 1 ? true : false;
+            return random.Next(0, 2) == 1 ? true : false;
         }
 
         public byte[] ObjectToByteArray()
