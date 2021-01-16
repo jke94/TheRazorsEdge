@@ -5,11 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:UserControls="clr-namespace:ServerWPFApplication.View.UserControls"
-        Title="Wind Farm Sumulator - Application" Height="450" Width="700"
+        Title="Wind Farm Sumulator - Application" Height="700" Width="700"
         Background="SlateGray"
         Icon=".\View\Icons\turbina-eolica.png"
-        WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        WindowStartupLocation="CenterScreen">
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <UserControls:UserControlWindFarm></UserControls:UserControlWindFarm>

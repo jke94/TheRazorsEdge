@@ -45,7 +45,7 @@
                         </TextBlock>
                     </Border>
                     <Border Style="{StaticResource BorderTypeB}">
-                        <TextBlock  Text="{Binding EstacionMetereologica.Temperatura, UpdateSourceTrigger=PropertyChanged}"
+                        <TextBlock  Text="{Binding EstacionMetereologica.Temperature, UpdateSourceTrigger=PropertyChanged}"
                                     Style="{StaticResource TextBlockTypeB}">
                         </TextBlock>
                     </Border>
@@ -62,7 +62,7 @@
                         </TextBlock>
                     </Border>
                     <Border Style="{StaticResource BorderTypeB}">
-                        <TextBlock  Text="{Binding EstacionMetereologica.Humedad, UpdateSourceTrigger=PropertyChanged}"
+                        <TextBlock  Text="{Binding EstacionMetereologica.Humidity, UpdateSourceTrigger=PropertyChanged}"
                                     Style="{StaticResource TextBlockTypeB}">
                         </TextBlock>
                     </Border>
@@ -74,12 +74,12 @@
                 </StackPanel>
                 <StackPanel Style="{StaticResource StackPanelTypeA}">
                     <Border Style="{StaticResource BorderTypeA}">
-                        <TextBlock  Text="Pressure (atm)"      
+                        <TextBlock  Text="Pressure (kPa)"      
                                     Style="{StaticResource TextBlockTypeA}">
                         </TextBlock>
                     </Border>
                     <Border Style="{StaticResource BorderTypeB}">
-                        <TextBlock  Text="{Binding EstacionMetereologica.Presion, UpdateSourceTrigger=PropertyChanged}"
+                        <TextBlock  Text="{Binding EstacionMetereologica.Pressure, UpdateSourceTrigger=PropertyChanged}"
                                     Style="{StaticResource TextBlockTypeB}">
                         </TextBlock>
                     </Border>

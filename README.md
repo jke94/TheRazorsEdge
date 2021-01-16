@@ -4,7 +4,12 @@ A WPF Applicaction (server) and console application (client) to comunicate using
 
 ## Description
 
-A WPF (Windows Presentation Foundation) Applicaction (server) and console application (client) to comunicate using Named Pipes for Network Interprocess Communication.
+A WPF (Windows Presentation Foundation) Applicaction (server) and console application (client) to comunicate using Named Pipes for Network Interprocess Communication. 
+A wind farm simulator with wind turbines. 
+
+Each wind turbine implements a observer patternto future works with metric recived from a pipeline. The console application (client) send metrics (randomly generated) through a pipeline (NamedPipeline) to server (the graphic application). The objetive is simulate changing weather conditions.
+
+![Example of Graphinc application](https://github.com/jke94/TheRazorsEdge/blob/dev/ProjectImages/ServerWPFApplicationApplication.PNG)
 
 ## Getting Started
 
@@ -45,4 +50,4 @@ This project is licensed under the [NAME HERE] License - see the LICENSE.md file
 
 ## Acknowledgments
 * [ACDC - The Razors Edge](https://www.youtube.com/watch?v=l_7SxoQW11g). The origin of the project name because the song was sounding in the creation of the project.
-* [El patrón Observador en C#](https://albertcapdevila.net/patron-observador-csharp/). Good explanation about observer pattern design.
+* [El patrÃ³n Observador en C#](https://albertcapdevila.net/patron-observador-csharp/). Good explanation about observer pattern design.

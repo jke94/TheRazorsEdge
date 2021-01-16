@@ -5,6 +5,7 @@ using System.IO.Pipes;
 using System.Threading.Tasks;
 using ServerWPFApplication.Model;
 using ServerWPFApplication.Core;
+using Newtonsoft.Json;
 
 namespace ServerWPFApplication.ViewModel
 {
@@ -14,7 +15,8 @@ namespace ServerWPFApplication.ViewModel
         private string textMessageTemperatura;
         private string textMessageHumedad;
         private string textMessagePresion;
-        private EstacionMetereologica estacionMetereologica;
+        private WeatherStation estacionMetereologica;
+        private Task [] tasks;
 
         public string TextMessageTemperatura
         {
@@ -58,7 +60,7 @@ namespace ServerWPFApplication.ViewModel
             }
         }
 
-        public EstacionMetereologica EstacionMetereologica
+        public WeatherStation EstacionMetereologica
         {
             get
             {
@@ -90,6 +92,8 @@ namespace ServerWPFApplication.ViewModel
             }
         }
 
+        public Task[] Tasks { get => tasks; set => tasks = value; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public WindTurbineViewModel()
@@ -100,21 +104,21 @@ namespace ServerWPFApplication.ViewModel
         public WindTurbineViewModel(WindTurbine windTurbine)
         {
             WindTurbine = windTurbine;
-            EstacionMetereologica = new EstacionMetereologica();
+            EstacionMetereologica = new WeatherStation();
 
-            DispositivoTiempoActual dispositivoTiempoActual = new DispositivoTiempoActual();
-            DispositivoEstadisticas dispositivoEstadisticas = new DispositivoEstadisticas();
-            DispositivoPredictivo dispositivoPredictivo = new DispositivoPredictivo();
+            DeviceCurrentTime dispositivoTiempoActual = new DeviceCurrentTime();
+            DeviceStatistics dispositivoEstadisticas = new DeviceStatistics();
+            DevicePredictive dispositivoPredictivo = new DevicePredictive();
 
-            estacionMetereologica.HaCambiadoElTiempo += dispositivoTiempoActual.ActualizarPantallaDipositivo;
-            estacionMetereologica.HaCambiadoElTiempo += dispositivoEstadisticas.AñadirDatosParaLasEstadisticas;
-            estacionMetereologica.HaCambiadoElTiempo += dispositivoPredictivo.AñadirDatosDePrediccion;
+            EstacionMetereologica.TimeHasChanged += dispositivoTiempoActual.ActualizarPantallaDipositivo;
+            EstacionMetereologica.TimeHasChanged += dispositivoEstadisticas.AñadirDatosParaLasEstadisticas;
+            EstacionMetereologica.TimeHasChanged += dispositivoPredictivo.AñadirDatosDePrediccion;
 
-            TextMessageTemperatura = "Mensajes, sensor temperatura. Esperando conecxión...";
-            TextMessageHumedad = "Mensajes, sensor humedad. Esperando conecxión...";
-            TextMessagePresion = "Mensajes, sensor presion. Esperando conecxión...";
+            TextMessageTemperatura = "Messages, temperature sensor. Waiting for connection ...";
+            TextMessageHumedad = "Messages, humidity sensor. Waiting for connection...";
+            TextMessagePresion = "Messages, pressure sensor. Waiting for connection...";
 
-            Task[] tasks = new Task[3]
+            Tasks = new Task[3]
             {
                 
                 Task.Run(() => InitializeNamedPipeServer(new NamedPipeNameBuilder(NamedPipesName.ThePipeNameTemperatura,"Turbine", WindTurbine.WindTurbineID).ToString(),TextMessageTemperatura, nameof(TextMessageTemperatura))),
@@ -128,41 +132,71 @@ namespace ServerWPFApplication.ViewModel
             using (NamedPipeServerStream pipeServer = 
                     new NamedPipeServerStream(namedPipeServer, PipeDirection.In))
             {
-                message = "NamedPipeServerStream object created.";
+                message = "NamedPipeServerStream object created and Waiting for client connection...";
 
-                // Wait for a client to connect
-                message = "Waiting for client connection...";
                 pipeServer.WaitForConnection();
 
                 message = "Client connected.";
 
                 using (StreamReader sr = new StreamReader(pipeServer))
                 {
-                    // Display the read text to the console
                     string temp;
+
                     while ((temp = sr.ReadLine()) != null)
                     {
-                        // message = string.Format("Texto escrito por el cliente: {0}", temp);
-                        
+                        var metric = JsonConvert.DeserializeObject<TheMetric>(temp.ToString());
+
                         switch (nameOfProperty)
                         {
                             case nameof(TextMessageTemperatura):
-                                TextMessageTemperatura  = string.Format("Texto escrito por el cliente: {0}", temp);
-                                EstacionMetereologica.AumentarLaTemperaturaEnGrados(1);
+
+                                TextMessageTemperatura = string.Format("Text written by the client:: {0}", temp);
+                                
+                                if (metric.WhatToDo)
+                                {
+                                    EstacionMetereologica.IncreaseTheTemperatureInDegrees((int)metric.TheValue);
+                                }
+                                else
+                                {
+                                    EstacionMetereologica.DecreaseTheTemperatureInDegrees((int)metric.TheValue);
+                                }
+
                                 break;
                             case nameof(TextMessageHumedad):
-                                TextMessageHumedad = string.Format("Texto escrito por el cliente: {0}", temp);
-                                EstacionMetereologica.AumentarLaHumedadEnPorcentaje(1);
+
+                                TextMessageHumedad = string.Format("Text written by the client:: {0}", temp);
+
+                                if (metric.WhatToDo)
+                                {
+                                    EstacionMetereologica.IncreaseHumidityInPercentage((int)metric.TheValue);
+                                }
+                                else
+                                {
+                                    EstacionMetereologica.DecreaseHumidityInPercentage((int)metric.TheValue);
+                                }
+
                                 break;
                             case nameof(TextMessagePresion):
-                                TextMessagePresion = string.Format("Texto escrito por el cliente: {0}", temp);
-                                EstacionMetereologica.AumentarLaPresionEnBares(1);
+                                TextMessagePresion = string.Format("Text written by the client:: {0}", temp);
+
+                                if (metric.WhatToDo)
+                                {
+                                    EstacionMetereologica.IncreaseThePreasureInBar((int)metric.TheValue);
+                                }
+                                else
+                                {
+                                    EstacionMetereologica.DecreaseThePreasureInBar((int)metric.TheValue);
+                                }
+
                                 break;
                         }
+
                         OnPropertyChanged(nameof(EstacionMetereologica));
                         OnPropertyChanged(nameof(nameOfProperty));
                     }
                 }
+
+            
             }
         }
 

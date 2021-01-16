@@ -9,6 +9,6 @@ namespace ServerWPFApplication.Model.Assistants
     public static class WindFarmAssistant
     {
         public static string windFarmName = "The Wind Farm Park";
-        public static int numberOfWindTurbines = 5;
+        public static int numberOfWindTurbines = 15;
     }
 }

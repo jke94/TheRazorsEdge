@@ -2,8 +2,8 @@
 {
     public static class NamedPipesName
     {
-        public static string ThePipeNameTemperatura = "ThePipeNameTemperatura";
-        public static string ThePipeNameHumedad = "ThePipeNameHumedad";
-        public static string ThePipeNamePresion = "ThePipeNamePresion";
+        public static string ThePipeNameTemperatura = "ThePipeNameTemperature";
+        public static string ThePipeNameHumedad = "ThePipeNameHumidity";
+        public static string ThePipeNamePresion = "ThePipeNamePressure";
     }
 }
