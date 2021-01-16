@@ -114,9 +114,9 @@ namespace ServerWPFApplication.ViewModel
             EstacionMetereologica.TimeHasChanged += dispositivoEstadisticas.AñadirDatosParaLasEstadisticas;
             EstacionMetereologica.TimeHasChanged += dispositivoPredictivo.AñadirDatosDePrediccion;
 
-            TextMessageTemperatura = "Mensajes, sensor temperatura. Esperando conecxión...";
-            TextMessageHumedad = "Mensajes, sensor humedad. Esperando conecxión...";
-            TextMessagePresion = "Mensajes, sensor presion. Esperando conecxión...";
+            TextMessageTemperatura = "Messages, temperature sensor. Waiting for connection ...";
+            TextMessageHumedad = "Messages, humidity sensor. Waiting for connection...";
+            TextMessagePresion = "Messages, pressure sensor. Waiting for connection...";
 
             Tasks = new Task[3]
             {
@@ -150,7 +150,7 @@ namespace ServerWPFApplication.ViewModel
                         {
                             case nameof(TextMessageTemperatura):
 
-                                TextMessageTemperatura = string.Format("Texto escrito por el cliente: {0}", temp);
+                                TextMessageTemperatura = string.Format("Text written by the client:: {0}", temp);
                                 
                                 if (metric.WhatToDo)
                                 {
@@ -164,7 +164,7 @@ namespace ServerWPFApplication.ViewModel
                                 break;
                             case nameof(TextMessageHumedad):
 
-                                TextMessageHumedad = string.Format("Texto escrito por el cliente: {0}", temp);
+                                TextMessageHumedad = string.Format("Text written by the client:: {0}", temp);
 
                                 if (metric.WhatToDo)
                                 {
@@ -177,7 +177,7 @@ namespace ServerWPFApplication.ViewModel
 
                                 break;
                             case nameof(TextMessagePresion):
-                                TextMessagePresion = string.Format("Texto escrito por el cliente: {0}", temp);
+                                TextMessagePresion = string.Format("Text written by the client:: {0}", temp);
 
                                 if (metric.WhatToDo)
                                 {
