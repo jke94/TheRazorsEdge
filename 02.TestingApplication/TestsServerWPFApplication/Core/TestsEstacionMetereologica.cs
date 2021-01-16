@@ -8,12 +8,12 @@ namespace TestsServerWPFApplication.Core
     [TestFixture]
     class TestsEstacionMetereologica
     {
-        private EstacionMetereologica estacionMetereologica;
+        private WeatherStation estacionMetereologica;
 
         [SetUp]
         public void Init()
         {
-            estacionMetereologica = new EstacionMetereologica();
+            estacionMetereologica = new WeatherStation();
         }
 
         [Test(Description = "Test to check that constructor returns an object correctly built.")]
@@ -25,73 +25,73 @@ namespace TestsServerWPFApplication.Core
         [Test(Description = "Test aumentar la temperatura.")]
         public void TestAumentarTemperatura()
         {
-            Assert.AreEqual(20, estacionMetereologica.Temperatura);
+            Assert.AreEqual(20, estacionMetereologica.Temperature);
 
-            estacionMetereologica.AumentarLaTemperaturaEnGrados(1);
-            Assert.AreEqual(21, estacionMetereologica.Temperatura);
+            estacionMetereologica.IncreaseTheTemperatureInDegrees(1);
+            Assert.AreEqual(21, estacionMetereologica.Temperature);
 
-            estacionMetereologica.AumentarLaTemperaturaEnGrados(2);
-            Assert.AreEqual(23, estacionMetereologica.Temperatura);
+            estacionMetereologica.IncreaseTheTemperatureInDegrees(2);
+            Assert.AreEqual(23, estacionMetereologica.Temperature);
         }
 
         [Test(Description = "Test disminuir la temperatura.")]
         public void TestDisminuirTemperatura()
         {
-            Assert.AreEqual(20, estacionMetereologica.Temperatura);
+            Assert.AreEqual(20, estacionMetereologica.Temperature);
 
-            estacionMetereologica.DisminuirLaTemperaturaEnGrados(1);
-            Assert.AreEqual(19, estacionMetereologica.Temperatura);
+            estacionMetereologica.DecreaseTheTemperatureInDegrees(1);
+            Assert.AreEqual(19, estacionMetereologica.Temperature);
 
-            estacionMetereologica.DisminuirLaTemperaturaEnGrados(23);
-            Assert.AreEqual(-4, estacionMetereologica.Temperatura);
+            estacionMetereologica.DecreaseTheTemperatureInDegrees(23);
+            Assert.AreEqual(-4, estacionMetereologica.Temperature);
         }
 
         [Test(Description = "Test aumentar la presion.")]
         public void TestAumentarPresion()
         {
-            Assert.AreEqual(100, estacionMetereologica.Presion);
+            Assert.AreEqual(100, estacionMetereologica.Pressure);
 
-            estacionMetereologica.AumentarLaPresionEnBares(1);
-            Assert.AreEqual(101, estacionMetereologica.Presion);
+            estacionMetereologica.IncreaseThePreasureInBar(1);
+            Assert.AreEqual(101, estacionMetereologica.Pressure);
 
-            estacionMetereologica.AumentarLaPresionEnBares(10);
-            Assert.AreEqual(111, estacionMetereologica.Presion);
+            estacionMetereologica.IncreaseThePreasureInBar(10);
+            Assert.AreEqual(111, estacionMetereologica.Pressure);
         }
 
         [Test(Description = "Test disminuir la presion.")]
         public void TestDisminuirPresion()
         {
-            Assert.AreEqual(100, estacionMetereologica.Presion);
+            Assert.AreEqual(100, estacionMetereologica.Pressure);
 
-            estacionMetereologica.DisminuirLaPresionEnBares(1);
-            Assert.AreEqual(99, estacionMetereologica.Presion);
+            estacionMetereologica.DecreaseThePreasureInBar(1);
+            Assert.AreEqual(99, estacionMetereologica.Pressure);
 
-            estacionMetereologica.DisminuirLaPresionEnBares(20);
-            Assert.AreEqual(79, estacionMetereologica.Presion);
+            estacionMetereologica.DecreaseThePreasureInBar(20);
+            Assert.AreEqual(79, estacionMetereologica.Pressure);
         }
 
         [Test(Description = "Test aumentar la humedad.")]
         public void TestAumentarHumedad()
         {
-            Assert.AreEqual(50, estacionMetereologica.Humedad);
+            Assert.AreEqual(50, estacionMetereologica.Humidity);
 
-            estacionMetereologica.AumentarLaHumedadEnPorcentaje(1);
-            Assert.AreEqual(51, estacionMetereologica.Humedad);
+            estacionMetereologica.IncreaseHumidityInPercentage(1);
+            Assert.AreEqual(51, estacionMetereologica.Humidity);
 
-            estacionMetereologica.AumentarLaHumedadEnPorcentaje(10);
-            Assert.AreEqual(61, estacionMetereologica.Humedad);
+            estacionMetereologica.IncreaseHumidityInPercentage(10);
+            Assert.AreEqual(61, estacionMetereologica.Humidity);
         }
 
         [Test(Description = "Test disminuir la humedad.")]
         public void TestDisminuirHumedad()
         {
-            Assert.AreEqual(50, estacionMetereologica.Humedad);
+            Assert.AreEqual(50, estacionMetereologica.Humidity);
 
-            estacionMetereologica.DisminuirLaHumedadEnPorcentaje(1);
-            Assert.AreEqual(49, estacionMetereologica.Humedad);
+            estacionMetereologica.DecreaseHumidityInPercentage(1);
+            Assert.AreEqual(49, estacionMetereologica.Humidity);
 
-            estacionMetereologica.DisminuirLaHumedadEnPorcentaje(20);
-            Assert.AreEqual(29, estacionMetereologica.Humedad);
+            estacionMetereologica.DecreaseHumidityInPercentage(20);
+            Assert.AreEqual(29, estacionMetereologica.Humidity);
         }
 
         [Test(Description = "Ha cambiado el tiempo.")]
@@ -100,21 +100,21 @@ namespace TestsServerWPFApplication.Core
             List<Oddfellow> receivedEvents = new List<Oddfellow>();
 
 
-            estacionMetereologica.HaCambiadoElTiempo += delegate (object sender, Oddfellow e)
+            estacionMetereologica.TimeHasChanged += delegate (object sender, Oddfellow e)
             {
                 receivedEvents.Add(e);
             };
             
-            Assert.AreEqual(20, estacionMetereologica.Temperatura);
-            estacionMetereologica.AumentarLaTemperaturaEnGrados(10);
-            Assert.AreEqual(30, receivedEvents[0].Temperatura);
+            Assert.AreEqual(20, estacionMetereologica.Temperature);
+            estacionMetereologica.IncreaseTheTemperatureInDegrees(10);
+            Assert.AreEqual(30, receivedEvents[0].Temperature);
              
 
-            estacionMetereologica.AumentarLaHumedadEnPorcentaje(10);
+            estacionMetereologica.IncreaseHumidityInPercentage(10);
 
             Assert.AreEqual(2, receivedEvents.Count);
             
-            Assert.AreEqual(30, estacionMetereologica.Temperatura);
+            Assert.AreEqual(30, estacionMetereologica.Temperature);
         }
     }
 }

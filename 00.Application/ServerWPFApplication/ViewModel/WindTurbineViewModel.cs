@@ -15,7 +15,7 @@ namespace ServerWPFApplication.ViewModel
         private string textMessageTemperatura;
         private string textMessageHumedad;
         private string textMessagePresion;
-        private EstacionMetereologica estacionMetereologica;
+        private WeatherStation estacionMetereologica;
         private Task [] tasks;
 
         public string TextMessageTemperatura
@@ -60,7 +60,7 @@ namespace ServerWPFApplication.ViewModel
             }
         }
 
-        public EstacionMetereologica EstacionMetereologica
+        public WeatherStation EstacionMetereologica
         {
             get
             {
@@ -104,15 +104,15 @@ namespace ServerWPFApplication.ViewModel
         public WindTurbineViewModel(WindTurbine windTurbine)
         {
             WindTurbine = windTurbine;
-            EstacionMetereologica = new EstacionMetereologica();
+            EstacionMetereologica = new WeatherStation();
 
-            DispositivoTiempoActual dispositivoTiempoActual = new DispositivoTiempoActual();
-            DispositivoEstadisticas dispositivoEstadisticas = new DispositivoEstadisticas();
-            DispositivoPredictivo dispositivoPredictivo = new DispositivoPredictivo();
+            DeviceCurrentTime dispositivoTiempoActual = new DeviceCurrentTime();
+            DeviceStatistics dispositivoEstadisticas = new DeviceStatistics();
+            DevicePredictive dispositivoPredictivo = new DevicePredictive();
 
-            estacionMetereologica.HaCambiadoElTiempo += dispositivoTiempoActual.ActualizarPantallaDipositivo;
-            estacionMetereologica.HaCambiadoElTiempo += dispositivoEstadisticas.AñadirDatosParaLasEstadisticas;
-            estacionMetereologica.HaCambiadoElTiempo += dispositivoPredictivo.AñadirDatosDePrediccion;
+            EstacionMetereologica.TimeHasChanged += dispositivoTiempoActual.ActualizarPantallaDipositivo;
+            EstacionMetereologica.TimeHasChanged += dispositivoEstadisticas.AñadirDatosParaLasEstadisticas;
+            EstacionMetereologica.TimeHasChanged += dispositivoPredictivo.AñadirDatosDePrediccion;
 
             TextMessageTemperatura = "Mensajes, sensor temperatura. Esperando conecxión...";
             TextMessageHumedad = "Mensajes, sensor humedad. Esperando conecxión...";
@@ -132,18 +132,16 @@ namespace ServerWPFApplication.ViewModel
             using (NamedPipeServerStream pipeServer = 
                     new NamedPipeServerStream(namedPipeServer, PipeDirection.In))
             {
-                message = "NamedPipeServerStream object created.";
+                message = "NamedPipeServerStream object created and Waiting for client connection...";
 
-                // Wait for a client to connect
-                message = "Waiting for client connection...";
                 pipeServer.WaitForConnection();
 
                 message = "Client connected.";
 
                 using (StreamReader sr = new StreamReader(pipeServer))
                 {
-                    // Display the read text to the console
                     string temp;
+
                     while ((temp = sr.ReadLine()) != null)
                     {
                         var metric = JsonConvert.DeserializeObject<TheMetric>(temp.ToString());
@@ -156,11 +154,11 @@ namespace ServerWPFApplication.ViewModel
                                 
                                 if (metric.WhatToDo)
                                 {
-                                    EstacionMetereologica.AumentarLaTemperaturaEnGrados((int)metric.TheValue);
+                                    EstacionMetereologica.IncreaseTheTemperatureInDegrees((int)metric.TheValue);
                                 }
                                 else
                                 {
-                                    EstacionMetereologica.DisminuirLaTemperaturaEnGrados((int)metric.TheValue);
+                                    EstacionMetereologica.DecreaseTheTemperatureInDegrees((int)metric.TheValue);
                                 }
 
                                 break;
@@ -170,11 +168,11 @@ namespace ServerWPFApplication.ViewModel
 
                                 if (metric.WhatToDo)
                                 {
-                                    EstacionMetereologica.AumentarLaHumedadEnPorcentaje((int)metric.TheValue);
+                                    EstacionMetereologica.IncreaseHumidityInPercentage((int)metric.TheValue);
                                 }
                                 else
                                 {
-                                    EstacionMetereologica.DisminuirLaHumedadEnPorcentaje((int)metric.TheValue);
+                                    EstacionMetereologica.DecreaseHumidityInPercentage((int)metric.TheValue);
                                 }
 
                                 break;
@@ -183,11 +181,11 @@ namespace ServerWPFApplication.ViewModel
 
                                 if (metric.WhatToDo)
                                 {
-                                    EstacionMetereologica.AumentarLaPresionEnBares((int)metric.TheValue);
+                                    EstacionMetereologica.IncreaseThePreasureInBar((int)metric.TheValue);
                                 }
                                 else
                                 {
-                                    EstacionMetereologica.DisminuirLaPresionEnBares((int)metric.TheValue);
+                                    EstacionMetereologica.DecreaseThePreasureInBar((int)metric.TheValue);
                                 }
 
                                 break;

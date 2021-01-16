@@ -58,10 +58,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\DispositivoEstadisticas.cs" />
-    <Compile Include="Core\DispositivoPredictivo.cs" />
-    <Compile Include="Core\DispositivoTiempoActual.cs" />
-    <Compile Include="Core\EstacionMetereologica.cs" />
+    <Compile Include="Core\DeviceStatistics.cs" />
+    <Compile Include="Core\DevicePredictive.cs" />
+    <Compile Include="Core\DeviceCurrentTime.cs" />
+    <Compile Include="Core\WeatherStation.cs" />
     <Compile Include="ViewModel\WindFarmViewModel.cs" />
     <Compile Include="ViewModel\WindTurbineViewModel.cs" />
     <Compile Include="View\UserControls\UserControlWindFarm.xaml.cs">

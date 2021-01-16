@@ -2,13 +2,13 @@
 
 namespace ServerWPFApplication.Core
 {
-    public class DispositivoTiempoActual
+    public class DeviceCurrentTime
     {
         public void ActualizarPantallaDipositivo(object sender, Oddfellow medidas)
         {
-            var temperatura = medidas.Temperatura;
-            var presion = medidas.Presion;
-            var humedad = medidas.Humedad;
+            var temperatura = medidas.Temperature;
+            var presion = medidas.Pressure;
+            var humedad = medidas.Humidity;
         }
     }
 }

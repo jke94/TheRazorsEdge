@@ -2,7 +2,7 @@
 
 namespace ServerWPFApplication.Core
 {
-    public class DispositivoEstadisticas
+    public class DeviceStatistics
     {
         public void AñadirDatosParaLasEstadisticas(object sender, Oddfellow e)
         {

@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ServerWPFApplication.Model
+﻿namespace ServerWPFApplication.Model
 {
     public class Oddfellow
     {
-        public decimal Temperatura { get; private set; }
-        public decimal Presion { get; private set; }
-        public decimal Humedad { get; private set; }
+        public decimal Temperature { get; private set; }
+        public decimal Pressure { get; private set; }
+        public decimal Humidity { get; private set; }
 
 
-        public Oddfellow(decimal temperatura, decimal presion, decimal humedad)
+        public Oddfellow(decimal temperature, decimal pressure, decimal humedity)
         {
-            Temperatura = temperatura;
-            Presion = presion;
-            Humedad = humedad;
+            Temperature = temperature;
+            Pressure = pressure;
+            Humidity = humedity;
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace ServerWPFApplication.Core
 {
-    public class DispositivoPredictivo
+    public class DevicePredictive
     {
         public void AñadirDatosDePrediccion(object sender, Oddfellow e)
         {
