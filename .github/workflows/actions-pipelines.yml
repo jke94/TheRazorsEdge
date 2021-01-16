@@ -6,7 +6,7 @@ name: TheRazorsEdge.sln master pipeline
 # events but only for the master branch
 on:
   push:
-    branches:
+    branches-ignore:
       - 'master'
 
 jobs:
@@ -31,9 +31,6 @@ jobs:
 
     - name: Build solution TheRazorsEdge.sln
       run:  msbuild TheRazorsEdge.sln /p:platform="Any CPU" /p:Configuration='Release'
-
-    - name: Run Unit tests.
-      run: dotnet test
     
     - name: Upload artifact
       uses: actions/upload-artifact@v2
