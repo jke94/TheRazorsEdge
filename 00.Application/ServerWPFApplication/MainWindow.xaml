@@ -8,8 +8,7 @@
         Title="Wind Farm Sumulator - Application" Height="700" Width="700"
         Background="SlateGray"
         Icon=".\View\Icons\turbina-eolica.png"
-        WindowStartupLocation="CenterScreen"
-        ResizeMode="CanResize">
+        WindowStartupLocation="CenterScreen">
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <UserControls:UserControlWindFarm></UserControls:UserControlWindFarm>
