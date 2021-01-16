@@ -10,7 +10,7 @@ namespace ClientConsoleSimulator
     {
         static void Main(string[] args)
         {
-            int numberOfTurbines = 5;
+            int numberOfTurbines = 10;
             WindTurbineSimulator[] windTurbines = new WindTurbineSimulator[numberOfTurbines];
 
             for (int i = 0; i < numberOfTurbines; i++)
