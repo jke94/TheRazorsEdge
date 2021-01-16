@@ -13,6 +13,8 @@ namespace ClientConsoleSimulator
     {
         private Task[] turbineTask = new Task[3];
 
+        private static int numberOfMetricToSend = 10;
+
         public WindTurbineSimulator(int numberOfTurbine)
         {
             turbineTask = new Task[3]
@@ -30,10 +32,10 @@ namespace ClientConsoleSimulator
                     new NamedPipeClientStream(".", pipeClientName, PipeDirection.Out))
             {
                 // Connect to the pipe or wait until the pipe is available.
-                Console.WriteLine("[{0}] Attempting to connect to pipe...", pipeClientName);
+                Console.WriteLine("[{0}]\tAttempting to connect to pipe...", pipeClientName);
                 pipeClient.Connect();
-                Console.WriteLine("[{0}] Connected to pipe.", pipeClientName);
-                Console.WriteLine("[{0}] There are currently {0} pipe server instances open.",
+                Console.WriteLine("[{0}]\tConnected to pipe.", pipeClientName);
+                Console.WriteLine("[{0}]\tThere are currently {1} pipe server instances open.",
                                     pipeClientName, pipeClient.NumberOfServerInstances.ToString());
                   
                 try
@@ -53,17 +55,18 @@ namespace ClientConsoleSimulator
 
                             Thread.Sleep(metric.TimeToSleep);
 
-                            Console.WriteLine(string.Format("[{0}], Count = {1}", pipeClientName, count));
+                            Console.WriteLine(string.Format("[{0}]\tMetric => WhatToDo = {1}, TheValue = {2}, TimeToSleep = {3} miliseconds.", 
+                                                            pipeClientName, metric.WhatToDo, metric.TheValue, metric.TimeToSleep));
                         }
-                        while (count < 10);
+                        while (count < numberOfMetricToSend);
                     }                    
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("[{0}] ERROR: {1}", pipeClientName, e.Message);
+                    Console.WriteLine("[{0}]\tERROR: {1}", pipeClientName, e.Message);
                 }
             }
-            Console.WriteLine("[{0}] El cliente ha cerrado la conecxión...", pipeClientName);
+            Console.WriteLine("[{0}]\tThe client has closed the connection.", pipeClientName);
         }
     }
 }

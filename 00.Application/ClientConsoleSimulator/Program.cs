@@ -15,7 +15,6 @@ namespace ClientConsoleSimulator
 
             for (int i = 0; i < numberOfTurbines; i++)
             {
-                Console.WriteLine("i = " + i);
                 windTurbines[i] = new WindTurbineSimulator(i);
             }
 
